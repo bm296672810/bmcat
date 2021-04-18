@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pics/mariadb_dark.png</file>
+        <file>pics/mariadb_light.png</file>
+        <file>pics/mysql_dark.png</file>
+        <file>pics/mysql_light.png</file>
+        <file>pics/sqlite_dark.png</file>
+        <file>pics/sqlite_light.png</file>
+        <file>pics/table_dark.png</file>
+        <file>pics/table_light.png</file>
+        <file>pics/database_dark.png</file>
+        <file>pics/database_light.png</file>
+    </qresource>
+</RCC>

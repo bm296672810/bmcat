@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>100</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout"/>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menubmcat">
+    <property name="title">
+     <string>bmcat</string>
+    </property>
+    <addaction name="actionabout_bmcat"/>
+    <addaction name="separator"/>
+    <addaction name="actionpreferences_2"/>
+    <addaction name="separator"/>
+    <addaction name="actionexit_bmcat"/>
+   </widget>
+   <widget class="QMenu" name="menufile">
+    <property name="title">
+     <string>file</string>
+    </property>
+    <addaction name="actionnew_project"/>
+    <addaction name="actionnew_connect"/>
+    <addaction name="actionnew"/>
+    <addaction name="separator"/>
+   </widget>
+   <addaction name="menubmcat"/>
+   <addaction name="menufile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <action name="actionabout_bmcat">
+   <property name="text">
+    <string>about bmcat</string>
+   </property>
+  </action>
+  <action name="actionpreferences">
+   <property name="text">
+    <string>preferences</string>
+   </property>
+  </action>
+  <action name="actionpreferences_2">
+   <property name="text">
+    <string>preferences</string>
+   </property>
+  </action>
+  <action name="actionexit_bmcat">
+   <property name="text">
+    <string>exit bmcat</string>
+   </property>
+  </action>
+  <action name="actionnew_connect">
+   <property name="text">
+    <string>new connect</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionnew">
+   <property name="text">
+    <string>new</string>
+   </property>
+  </action>
+  <action name="actionnew_project">
+   <property name="text">
+    <string>new project</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
