@@ -2,7 +2,10 @@
 #define WORKAREA_H
 
 #include <QWidget>
+#include <QTreeWidgetItem>
 #include <QSplitter>
+
+#include "db/db.h"
 
 namespace Ui {
 class Workarea;
@@ -20,9 +23,14 @@ private:
     void initUI();
     void initTreeWidget();
 
+private slots:
+    void itemDoubleClicked(QTreeWidgetItem *item, int column);
+
 private:
     Ui::Workarea *ui;
     QSplitter* split;
+    QList<QTreeWidgetItem*> items;
+    QVector<std::shared_ptr<DataManage>> dms;
 };
 
 #endif // WORKAREA_H

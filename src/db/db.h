@@ -8,6 +8,9 @@
 #include <QSqlQuery>
 #include <QVector>
 
+template <typename... Args>
+void unused(Args...){}
+
 class DataManage;
 
 namespace db {
@@ -44,6 +47,8 @@ public:
     ~DataManage() {}
     QString ConnName() const { return _conn.name; }
     db::ConnType ConnType() const { return _conn.type; }
+    QStringList GetTables() const;
+    void InitDatabase();
     void SetConnName(const QString& name) { _conn.name = name; updateValue(); }
 
 private:
@@ -51,6 +56,7 @@ private:
 
 private:
     db::connection _conn;
+    std::shared_ptr<QSqlDatabase> _db;
 
 };
 

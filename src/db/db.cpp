@@ -73,3 +73,40 @@ void DataManage::updateValue()
 {
 
 }
+
+QStringList DataManage::GetTables() const
+{
+    QStringList ts;
+    if(!_db)
+        return ts;
+
+    ts = _db->tables();
+    return ts;
+}
+
+void DataManage::InitDatabase()
+{
+    _db = std::make_shared<QSqlDatabase>();
+    switch (_conn.type) {
+    case db::ConnType::CT_MYSQL:
+    {
+        *_db = QSqlDatabase::addDatabase("QMYSQL");
+        _db->setHostName(_conn.addr);
+        _db->setDatabaseName(_conn.dbname);       //这里输入你的数据库名
+        _db->setUserName(_conn.user);
+        _db->setPassword(_conn.pwd);
+        _db->setPort(_conn.port.toInt());
+    }
+        break;
+    case db::ConnType::CT_SQLITE:
+    {
+        *_db = QSqlDatabase::addDatabase("QSQLITE");
+        _db->setDatabaseName(_conn.addr);
+    }
+        break;
+    default: break;
+    }
+
+    if(!_db->open())
+        qDebug() << "open db error!";
+}

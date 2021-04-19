@@ -32,9 +32,9 @@ void Workarea::initUI()
 
 void Workarea::initTreeWidget()
 {
-    auto dms = db::GetDataManages();
+    dms = db::GetDataManages();
 
-    QList<QTreeWidgetItem*> items;
+//    QList<QTreeWidgetItem*> items;
     for(int i = 0; i < dms.size(); i++)
     {
         QTreeWidgetItem* root = new QTreeWidgetItem(ui->treeWidget, QStringList(dms.at(i)->ConnName()));
@@ -54,7 +54,32 @@ void Workarea::initTreeWidget()
         }
         root->setIcon(0, icon);
 
-//        items.append(root);
+        items.append(root);
     }
     ui->treeWidget->addTopLevelItems(items);
+    connect(ui->treeWidget, &QTreeWidget::itemDoubleClicked, this, &Workarea::itemDoubleClicked);
+}
+
+void Workarea::itemDoubleClicked(QTreeWidgetItem *item, int column)
+{
+    unused(column);
+
+    for(int i = 0; i < items.size(); i++) {
+        if(items.at(i) == item)
+        {
+            auto dm = dms.at(i);
+            dm->InitDatabase();
+            auto tables = dm->GetTables();
+            for(auto it : tables)
+            {
+                QTreeWidgetItem* tmpItem = new QTreeWidgetItem(QStringList(it));
+                QIcon icon;
+                icon.addPixmap(QPixmap(":/pics/table_dark.png"), QIcon::Normal);
+                icon.addPixmap(QPixmap(":/pics/table_light.png"), QIcon::Active);
+                items.append(tmpItem);
+                item->addChild(tmpItem);
+            }
+            break;
+        }
+    }
 }
